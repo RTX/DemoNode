@@ -4,10 +4,14 @@ version: 0.2
 phases:
   build:
     commands:
-      - run compile_my_project
-  post_build:
-    commands:
+      - run docker build -t node-demo .
+      - echo "Build completed" 
+  tag:
+    commands:      
+      - run run docker tag node-demo:latest 027065296145.dkr.ecr.us-east-1.amazonaws.com/node-demo:latest
       - echo "Build completed"
-artifacts:
-  files:
-    - my_output_file
+  push:
+    commands:
+      - run docker push 027065296145.dkr.ecr.us-east-1.amazonaws.com/node-demo:latest
+      - echo "Push completed"
+
