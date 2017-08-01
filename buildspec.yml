@@ -1,0 +1,13 @@
+# buildspec.yml
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - run compile_my_project
+  post_build:
+    commands:
+      - echo "Build completed"
+artifacts:
+  files:
+    - my_output_file
