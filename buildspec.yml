@@ -6,12 +6,10 @@ phases:
     commands:
       - run docker build -t node-demo .
       - echo "Build completed" 
-  tag:
+  post_build:
     commands:      
       - run run docker tag node-demo:latest 027065296145.dkr.ecr.us-east-1.amazonaws.com/node-demo:latest
-      - echo "Build completed"
-  push:
-    commands:
+      - echo "Build completed"  
       - run docker push 027065296145.dkr.ecr.us-east-1.amazonaws.com/node-demo:latest
       - echo "Push completed"
 
